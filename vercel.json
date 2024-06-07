@@ -1,10 +1,16 @@
 {
     "version": 2,
     "builds": [
-      { "src": "api/index.py", "use": "@vercel/python" }
+      {
+        "src": "main.py",
+        "use": "@vercel/python",
+        "config": { "includeFiles": ["streamlit_app/**", "data/**"] }
+      }
     ],
     "routes": [
-      { "src": "/(.*)", "dest": "/api/index.py" }
-    ]
+      { "src": "/(.*)", "dest": "/main.py" }
+    ],
+    "buildCommand": "sh build.sh"
   }
+  
   
